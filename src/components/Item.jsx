@@ -1,4 +1,6 @@
 import React from 'react';
+import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
+
 import './stylesComponents.css'
 
 
@@ -10,7 +12,7 @@ export default function Item({producto}){
             <p>
                 $ {producto.precio}
             </p>
-            <a href="#!" class="btn btn-primary">Ver Producto</a>
+            <Link to={`/${producto.articulo}`}>Ver Producto</Link>
         </div>
     )
 }
