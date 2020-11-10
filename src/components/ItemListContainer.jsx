@@ -6,7 +6,7 @@ import ItemList from './ItemList';
 export default function ItemListContainer(){
     return(
         <div className="container">
-            <h2>Ecommerce de Accesorios</h2>
+            <h2 style={{textAlign:"center"}} className="card-title">Realiza tu pedido!</h2>
             <ItemList/>
         </div>
     )

@@ -1,16 +1,44 @@
-import React from 'react';
-import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
+import React from "react";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 
-import CartWidget from './CartWidget';
-import Menu from './Menu';
+import CartWidget from "./CartWidget";
+import Menu from "./Menu";
 
-function Navbar(){
-    return(
-        <nav className="container navbar">
-            <Menu/>
-            <CartWidget/>
-        </nav>
-    )
+function Navbar() {
+  return (
+    <div>
+      <nav className="sidenav-trigger" style={{ height: "80px" }}>
+        <div className="nav-wrapper" style={{ padding: "10px 50px" }}>
+          <a href="#!" className="brand-logo">
+            MiPedidoApp
+          </a>
+          <CartWidget />
+          <a href="#" data-target="mobile-demo" className="sidenav-trigger">
+            <i className="material-icons">menu</i>
+          </a>
+          <ul className="right hide-on-med-and-down">
+            <li>
+              <Link to="/">Productos</Link>
+            </li>
+            <li>
+              <a href="badges.html">Sobre mí</a>
+            </li>
+            <li>
+              <a href="collapsible.html">Contacto</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <ul className="sidenav" id="mobile-demo">
+        <li>
+          <Link to="/">Productos</Link>
+        </li>
+        <li>Sobre mí</li>
+        <li>Contacto</li>
+      </ul>
+    </div>
+  );
 }
 
 export default Navbar;
