@@ -45,7 +45,7 @@ export default function CartProvider({ children, defaultCart}){
                             id: item.id,
                             articulo: item.articulo,
                             cantidad: i.cantidad + cant,
-                            precio: (i.precio + item.precio) * cant,
+                            precio: i.precio + (item.precio * cant),
                             foto: item.foto
                         }
                     } else {
