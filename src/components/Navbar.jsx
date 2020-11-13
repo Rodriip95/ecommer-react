@@ -12,7 +12,10 @@ function Navbar() {
           <a href="#!" className="brand-logo">
             MiPedidoApp
           </a>
-          <CartWidget />
+          <Link to="/cart">
+            <CartWidget />
+          </Link>
+
           <a href="#" data-target="mobile-demo" className="sidenav-trigger">
             <i className="material-icons">menu</i>
           </a>

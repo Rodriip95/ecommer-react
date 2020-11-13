@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import ItemCount from "./ItemCount";
 import "./stylesComponents.css";
+import { CartContext } from "../context/CartContext";
 
 const inventario = [
   {
@@ -66,6 +67,8 @@ const inventario = [
 ];
 
 export default function ItemDetail() {
+  const {add} = useContext(CartContext)
+  const [unidades, setUnidades] = useState(1);
   const [products, setProducts] = useState(inventario);
 
   var { id } = useParams();
@@ -73,6 +76,29 @@ export default function ItemDetail() {
   useEffect(() => {
     setProducts(products[id - 1]);
   }, [inventario]);
+
+
+  function sum() {
+    if(unidades < products.stock)
+    setUnidades(unidades + 1);
+  }
+  function resta() {
+    if (unidades > 1) {
+      setUnidades(unidades - 1);
+    }
+  }
+
+
+  const handlerAdd = () =>{
+    if(products.stock > 0){
+      add(products, unidades)
+      products.stock = products.stock - unidades 
+      console.log(products)
+    } else {
+      alert("No hay mas stock")
+    }
+    setUnidades(1)
+  }
 
   return (
     <div style={{ padding: "50px", maxWidth: "600px", margin: "10px auto" }}>
@@ -85,10 +111,8 @@ export default function ItemDetail() {
             {products.articulo}
           </span>
           <hr/>
-          <p className="card-title grey-text text-darken-4">{products.categoria}</p>
-          <hr/>
           <p className="card-title grey-text text-darken-4">Descripcion: {products.descripcion}</p>
-          <ItemCount stock={products.stock} />
+          {products.stock > 0 ?<ItemCount unidades={unidades} sum={sum} resta={resta} handlerAdd={handlerAdd} stock={products.stock} product={products}/> : <p>Sin stock</p>}
         </div>
       </div>
     </div>

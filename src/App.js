@@ -4,6 +4,7 @@ import NavBar from './components/Navbar';
 import ItemDetail from './components/ItemDetail';
 import ItemListContainer from './components/ItemListContainer';
 import  CartContext  from './context/CartContext';
+import Cart from './components/cat';
 
 
 function App() {
@@ -17,6 +18,9 @@ function App() {
         <Switch>
           <Route path="/item/:id">
             <ItemDetail/>
+          </Route>
+          <Route path="/cart">
+            <Cart/>
           </Route>
           <Route path="/">
             <ItemListContainer/>

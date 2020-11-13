@@ -68,7 +68,7 @@ const inventario = new Promise((resolve) => {
         foto: "http://lorempixel.com/output/food-q-c-600-600-9.jpg",
       },
     ]);
-  }, 2000);
+  }, 3000);
 });
 
 export default function ItemList() {

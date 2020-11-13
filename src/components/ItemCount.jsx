@@ -1,19 +1,11 @@
-import React, { useState } from "react";
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+// import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+
 
 import "./stylesComponents.css";
 
-export default function ItemCount({ stock }) {
-  const [unidades, setUnidades] = useState(0);
+export default function ItemCount({ stock , product, unidades, sum ,resta ,handlerAdd}) {
 
-  function sum() {
-    setUnidades(unidades + 1);
-  }
-  function resta() {
-    if (unidades > 0) {
-      setUnidades(unidades - 1);
-    }
-  }
 
   return (
     <>
@@ -22,12 +14,8 @@ export default function ItemCount({ stock }) {
           margin: "10px 50px",
           display: "flex",
           justifyContent: "center",
-        }}
-      >
-        <button
-          onClick={resta}
-          style={{ border: "none", backgroundColor: "rgba(255,255,255)" }}
-        >
+        }}>
+        <button onClick={resta} style={{ border: "none", backgroundColor: "rgba(255,255,255)" }}>
           <a class="btn-floating waves-effect waves-light red">
             <i class="material-icons">remove</i>
           </a>
@@ -35,10 +23,7 @@ export default function ItemCount({ stock }) {
         <span style={{ margin: "10px 15px", fontSize: "24px", color: "black" }}>
           {unidades}
         </span>
-        <button
-          onClick={sum}
-          style={{ border: "none", backgroundColor: "rgba(255,255,255)" }}
-        >
+        <button onClick={sum} style={{ border: "none", backgroundColor: "rgba(255,255,255)" }}>
           <a class="btn-floating waves-effect waves-light red">
             <i class="material-icons">add</i>
           </a>
@@ -47,7 +32,7 @@ export default function ItemCount({ stock }) {
       <div
         style={{ margin: "10px", display: "flex", justifyContent: "center" }}
       >
-        <button class="waves-effect waves-light btn">Agregar al Carrito</button>
+        <button onClick={handlerAdd} class="waves-effect waves-light btn">Agregar al Carrito</button>
       </div>
     </>
   );
