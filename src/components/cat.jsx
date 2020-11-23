@@ -19,10 +19,10 @@ function Cart(){
         <tbody>
             {cart.map((pro)=>(
                 <tr>
-                <td><img style={{maxWidth:"150px"}} src={pro.foto}/></td>
-                <td>{pro.articulo}</td>
+                <td><img style={{maxWidth:"150px"}} src={pro.imageId}/></td>
+                <td>{pro.title}</td>
                 <td>{pro.cantidad}</td>
-                <td>$ {pro.precio}</td>
+                <td>$ {pro.price}</td>
               </tr>
             ))}
         </tbody>

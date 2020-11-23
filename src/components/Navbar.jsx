@@ -24,10 +24,12 @@ function Navbar() {
               <Link to="/">Productos</Link>
             </li>
             <li>
-              <a href="badges.html">Sobre mí</a>
+            <Link to="/crud">
+                CRUD
+            </Link>
             </li>
             <li>
-              <a href="collapsible.html">Contacto</a>
+              <a href="">Contacto</a>
             </li>
           </ul>
         </div>
@@ -37,7 +39,10 @@ function Navbar() {
         <li>
           <Link to="/">Productos</Link>
         </li>
-        <li>Sobre mí</li>
+        <li><Link to="/crud">
+                CRUD
+            </Link>
+        </li>
         <li>Contacto</li>
       </ul>
     </div>
