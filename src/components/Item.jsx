@@ -44,7 +44,7 @@ export default function Item({ producto }) {
           <p style={{fontSize: "30px", paddingLeft:"10px"}}>$ {producto.price}</p>
         </div>
         <div class="card-action">
-        <Link to={`/item/${producto.title}`}>
+        <Link to={`/item/${producto.id}`}>
             <button className="waves-effect waves-light btn">
             Ver Producto
             </button>

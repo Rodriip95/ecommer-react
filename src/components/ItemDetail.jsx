@@ -18,20 +18,18 @@ export default function ItemDetail() {
     console.log("Params: "+id)
     const db = getFirestore()
     const itemCollection = db.collection("items")
-    const whereId = itemCollection.where('title','==',id)
+    const item = itemCollection.doc(id)
 
-    whereId.get().then((snapshot)=>{
+    item.get().then((snapshot)=>{
       console.log(snapshot)
-      if(snapshot.size === 0){
+      if(!snapshot.exists){
         console.log("Not Results")
       }
-      snapshot.forEach(doc => {
-        console.log(doc.id, '=>', doc.data());
-        setProducts({id: doc.id, ...doc.data()})
-      });
+      setProducts({id: snapshot.id, ...snapshot.data()})
+
       // setProducts(snapshot.docs.map(doc => ({id: doc.id, ...doc.data()}) ))
     })
-  }, [products]);
+  }, [id]);
 
 
   function sum() {
