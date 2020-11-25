@@ -7,23 +7,23 @@ import 'firebase/firestore'
 function Crud() {
     const [producto, setProducto] = useState({})
 
-    const cargarProducto= async (e) =>{
+    const cargarProducto= (e) =>{
         e.preventDefault()
         const newProducts = {
-          [producto.titulo] : producto.titulo,
-          [producto.descripcion] : producto.descripcion,
-          [producto.stock] : producto.stock,
-          [producto.precio] : producto.precio,
+          title : producto.title,
+          description : producto.description,
+          stock : producto.stock,
+          price : producto.price,
         }
         const db = getFirestore()
-        const product= db.collection('productos')
+        const product= db.collection('items')
         
-        try{
-          const doc = await product.add(newProducts)
-          console.log("Add task "+doc.id)
-        } catch(err) {
+        product.add(newProducts).then((doc)=>{
+          console.log("Add task "+doc)
+        })
+        .catch(err => 
           console.log("Error task")
-        }
+        )
     }
 
     const handlerChange = (e) =>{

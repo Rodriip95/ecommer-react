@@ -10,7 +10,7 @@ import { getFirestore } from "../firebase";
 export default function ItemDetail() {
   const {add} = useContext(CartContext)
   const [unidades, setUnidades] = useState(1);
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState({});
 
   var { id } = useParams();
 
