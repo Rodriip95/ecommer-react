@@ -14,9 +14,8 @@ export default function ItemList() {
 
   /* inicializar segun los valores del desafio */
   useEffect(() => {
-    
     const db = getFirestore()
-    const itemCollection = db.collection("items")
+    const itemCollection = db.collection("foods")
     itemCollection.get().then((querySnapshot)=>{
       // console.log(querySnapshot)
       if(querySnapshot.size == 0){
@@ -30,7 +29,7 @@ export default function ItemList() {
       setLoad(true);
     })
 
-  }, []);
+  },[]);
 
   return (
     <div>

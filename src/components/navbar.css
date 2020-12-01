@@ -1,0 +1,15 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+
+#miPedidoApp {
+    font-family: 'Yellowtail', cursive;
+    font-size: 50px;
+    color: aliceblue;
+}
+
+
+@media only screen and (max-width: 992px) {
+    #miPedidoApp {
+     margin-left: 25%;
+    }
+  }

@@ -1,17 +1,19 @@
-import React from "react";
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
-
+import React, { useContext } from "react";
+import { BrowserRouter, Route, Switch, Link, useHistory } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 import CartWidget from "./CartWidget";
-import Menu from "./Menu";
+import './navbar.css';
 
 function Navbar() {
+  const locally = useHistory()
   return (
     <div>
       <nav className="sidenav-trigger" style={{ height: "80px" }}>
         <div className="nav-wrapper" style={{ padding: "10px 50px" }}>
-          <a href="#!" className="brand-logo">
-            MiPedidoApp
-          </a>
+          <button id="miPedidoApp" onClick={()=>locally.push('/')} className="aves-effect waves-teal btn-flat">
+            Menu
+          </button>
+
           <Link to="/cart">
             <CartWidget />
           </Link>
@@ -35,16 +37,7 @@ function Navbar() {
         </div>
       </nav>
 
-      <ul className="sidenav" id="mobile-demo">
-        <li>
-          <Link to="/">Productos</Link>
-        </li>
-        <li><Link to="/crud">
-                CRUD
-            </Link>
-        </li>
-        <li>Contacto</li>
-      </ul>
+      
     </div>
   );
 }
