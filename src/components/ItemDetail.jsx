@@ -56,9 +56,9 @@ export default function ItemDetail() {
               right: "-10px",
               zIndex: "5",
             }}
-            class="btn-floating waves-effect waves-light red"
+            className="btn-floating waves-effect waves-light red"
           >
-            <i class="material-icons">close</i>
+            <i className="material-icons">close</i>
           </button>
           <div className="card z-depth-5">
             <div className="card-image waves-effect waves-block waves-light">

@@ -80,19 +80,19 @@ export default function ItemList() {
                 setReset(!reset);
                 setCategoria("Categorias");
               }}
-              class="btn-floating waves-effect waves-light red"
+              className="btn-floating waves-effect waves-light red"
             >
-              <i class="material-icons">close</i>
+              <i className="material-icons">close</i>
             </button>
             <button
               onClick={filtroBebidas}
-              class="waves-effect waves-teal btn-flat"
+              className="waves-effect waves-teal btn-flat"
             >
               Bebidas
             </button>
             <button
               onClick={filtroComidas}
-              class="waves-effect waves-teal btn-flat"
+              className="waves-effect waves-teal btn-flat"
             >
               Comida
             </button>

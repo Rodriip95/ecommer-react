@@ -55,8 +55,8 @@ function Cart(){
                     </div>
                     <div className="col s4" style={centrar}>
                         <span style={dato}>$ {pro.precio * pro.cantidad}</span>
-                        <button onClick={()=>removeCart(pro)} style={{marginLeft:"10px"}} class="waves-effect waves-teal btn-flat">
-                            <i style={{fontSize:"26px"}} class="material-icons">not_interested</i>
+                        <button onClick={()=>removeCart(pro)} style={{marginLeft:"10px"}} className="waves-effect waves-teal btn-flat">
+                            <i style={{fontSize:"26px"}} className="material-icons">not_interested</i>
                         </button>
                     </div>
                 </div>
@@ -64,7 +64,7 @@ function Cart(){
             <Checkout cart={cart}/>
             </>:<>
             <h3>Carrito vacio!</h3>
-            <button onClick={()=> locally.push("/")} class="waves-effect waves-light btn">Seleccionar productos</button>
+            <button onClick={()=> locally.push("/")} className="waves-effect waves-light btn">Seleccionar productos</button>
             </>
         }
             

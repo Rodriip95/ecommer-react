@@ -1,27 +1,10 @@
-import React, { useContext, useEffect } from "react";
-import {
-  BrowserRouter,
-  Route,
-  Switch,
-  Link,
-  useParams,
-} from "react-router-dom";
-import { CartContext } from "../context/CartContext";
+import React from "react";
+import { Link } from "react-router-dom";
 import Images from "./images/images";
 
 import "./stylesComponents.css";
 
 export default function Item({ producto }) {
-  const { add } = useContext(CartContext);
-
-  const handlerClick = (e) => {
-    if (producto.stock > 0) {
-      add(producto);
-      producto.stock--;
-    } else {
-      alert("No hay mas stock");
-    }
-  };
 
   return (
     <div className="col s12 m6 xl4">
@@ -60,7 +43,7 @@ export default function Item({ producto }) {
             $ {producto.precio}
           </p>
         </div>
-        <div class="card-action">
+        <div className="card-action">
           <Link to={`/item/${producto.id}`}>
             <button className="waves-effect waves-light btn">
               Ver Producto

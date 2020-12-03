@@ -9,8 +9,8 @@ export default function Checkout({cart}){
 
     return(
       <div style={{float: "right", marginRight:"50px"}}>
-        <button onClick={()=>locally.push('/checkout')} style={estilosBtn} class="waves-effect waves-light btn">
-          <i class="Large material-icons right">check</i>Comprar $<span>{total}</span></button>  
+        <button onClick={()=>locally.push('/checkout')} style={estilosBtn} className="waves-effect waves-light btn">
+          <i className="Large material-icons right">check</i>Comprar $<span>{total}</span></button>  
       </div>        
     )
 }
