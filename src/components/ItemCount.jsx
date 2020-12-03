@@ -1,11 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, {  useState } from "react";
 import { Link } from "react-router-dom";
 // import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 
-
-import "./stylesComponents.css";
-
-export default function ItemCount({addCart, sumarStock, descontarStock, stock , product, unidades, sum ,resta ,handlerAdd}) {
+export default function ItemCount({addCart,  product, unidades ,handlerAdd}) {
   const [cantidad, setCant] = useState(1)
   const [goCart, setGo] = useState(false)
 

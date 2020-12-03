@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { getFirebase, getFirestore } from "../firebase";
+
 
 export const CartContext = createContext();
 
@@ -7,42 +7,44 @@ export const useCartContect = () => useContext(CartContext);
 
 export default function CartProvider({ children, defaultCart }) {
   const [cart, setCart] = useState([]);
-  
+  const [total, setTotal] = useState(0);
 
-  function sumarStock(id, cantidad = 1) {
-    const db = getFirestore()
-    var foodCollection = db.collection("foods").doc(id)
-    foodCollection.get().then(doc =>{
-        if(doc.data().stock > doc.data().stockInicial){
-            foodCollection.update({stock: doc.data().stock + cantidad}).then(()=>{
-                console.log("Document successfully updated!")
-            }).catch(error => console.error("Error updating document: ", error))
-        } else {
-            console.log("Stock empty")
-        }
-    }).catch(error => console.error("Error updating document: ", error))
+
+  function removeAll(){
+    setTotal(0)
+    setCart([])
   }
 
-  
-
   function removeCart(item) {
+    setTotal(total-(item.precio*item.cantidad))
     setCart(cart.filter((e) => e.id !== item.id))
   }
 
   function addCart(item, cantidad){
     item.cantidad = cantidad
-    if(cart.length === 0){return setCart([...cart, item])} 
+    if(cart.length === 0){
+      setTotal(total+(item.precio*cantidad))
+      return setCart([...cart, item])
+    } 
     else {
       let esta = false;
       cart.forEach((p) => {
         if (p.id === item.id) {esta = true}
       })
-      if (!esta) {return setCart([...cart, item])} 
+      if (!esta) {
+        setTotal(total+(item.precio*cantidad))
+        return setCart([...cart, item])
+      } 
       else {
         let arrNuevo = cart;
+        let totalNuevo=total;
         arrNuevo.map((p) => {
-          if (p.id === item.id) {p.cantidad = item.cantidad}
+          if (p.id === item.id) {
+            totalNuevo = totalNuevo - (p.cantidad*p.precio)
+            p.cantidad = item.cantidad
+          }
         })
+        setTotal(totalNuevo+(item.precio*cantidad))
         return setCart(arrNuevo)
       }
     }
@@ -51,7 +53,7 @@ export default function CartProvider({ children, defaultCart }) {
 
 
   return (
-    <CartContext.Provider value={{ addCart, cart,  removeCart, sumarStock }}>
+    <CartContext.Provider value={{ addCart, total, cart,  removeCart, removeAll }}>
       {children}
     </CartContext.Provider>
   );

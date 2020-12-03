@@ -35,7 +35,8 @@ export default function Item({ producto }) {
       <div className="card">
         <div className="card-image">
         <Link to={`/item/${producto.id}`}>
-          <img src={Images[producto.imagen]} />
+        { producto.stock > 0 ? <img className="activator" src={Images[producto.imagen]} alt="Imagen del producto"/>
+        :<img style={{filter: "grayscale(100%)"}} className="activator" src={Images[producto.imagen]} alt="Imagen del producto"/>}
           </Link>
           <span className="card-title" style={{fontSize: "24px", backgroundColor:"rgba(255, 0, 0, 0.3)", width:"600px", padding:"10px"}}>{producto.nombre}</span> 
         </div>

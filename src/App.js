@@ -1,14 +1,15 @@
-import React, { Fragment, useEffect, useContext } from 'react';
-import {BrowserRouter, Route, Switch, Link, useParams} from 'react-router-dom';
+import React, { Fragment } from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import NavBar from './components/Navbar';
 import ItemDetail from './components/ItemDetail';
 import ItemListContainer from './components/ItemListContainer';
 import  CartContext  from './context/CartContext';
 import Cart from './components/cart';
-import Crud from './components/crud';
+
 
 
 import './firebase';
+import FormCheckout from './components/FormCheckout';
 
 function App() {
  
@@ -22,8 +23,8 @@ function App() {
           <Route path="/item/:id">
             <ItemDetail/>
           </Route>
-          <Route path="/crud">
-            <Crud/>
+          <Route path="/checkout">
+            <FormCheckout/>
           </Route>
           <Route path="/cart">
             <Cart/>
