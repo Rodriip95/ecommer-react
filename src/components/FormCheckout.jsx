@@ -1,21 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
-import { CartContext } from '../context/CartContext'
+import { CartContext } from "../context/CartContext";
 import * as firebase from "firebase/app";
 import "firebase/firestore";
 import { getFirestore } from "../firebase";
-import Swal from 'sweetalert'
+import Swal from "sweetalert";
 import { useHistory } from "react-router-dom";
 
-
-function validarMail(elemento){
+function validarMail(elemento) {
   var regex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-  
-  if (regex.test(elemento)) {
-      return true
-  } else {
-    return false
-  }
 
+  if (regex.test(elemento)) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 export default function FormCheckout() {
@@ -25,58 +23,54 @@ export default function FormCheckout() {
     email: "",
     confirmEmail: "",
   });
-  const {total, cart ,removeAll} = useContext(CartContext)
-  const locally = useHistory()
+  const { total, cart, removeAll } = useContext(CartContext);
+  const locally = useHistory();
 
-  useEffect(()=>{
-    console.log("Validando mail")
-    validarMail(userInfo.email)
-  },[userInfo])
-  
+  useEffect(() => {
+    validarMail(userInfo.email);
+  }, [userInfo]);
 
   function handleChange(e) {
     setInfo({ ...userInfo, [e.target.name]: e.target.value });
   }
-
 
   function handleSubmit(e) {
     e.preventDefault();
     const db = getFirestore();
     db.collection("orders")
       .add({
-         userInfo,
-         date:firebase.firestore.Timestamp.fromDate(new Date()),
-         total: total,
-         cart: cart
+        userInfo,
+        date: firebase.firestore.Timestamp.fromDate(new Date()),
+        total: total,
+        cart: cart,
       })
       .then(function (docRef) {
         Swal(
-          'Pedido Realizado!',
+          "Pedido Realizado!",
           `Comprobante de orden N° ${docRef.id}`,
-          'success'
-        )
-        console.log("Document written with ID: ", docRef.id);
+          "success"
+        );
       })
       .catch(function (error) {
         console.error("Error adding document: ", error);
       });
-    cart.forEach((doc)=>{
-      console.log(doc)
-      db.collection("foods").doc(doc.id).update({
+    cart.forEach((doc) => {
+      db.collection("foods")
+        .doc(doc.id)
+        .update({
           ...doc,
-          stock: doc.stock - doc.cantidad ,
-          cantidad: firebase.firestore.FieldValue.delete()
-      })
-      .then(function() {
+          stock: doc.stock - doc.cantidad,
+          cantidad: firebase.firestore.FieldValue.delete(),
+        })
+        .then(function () {
           console.log("Producto Actualizado!");
-      })
-      .catch(function(error) {
+        })
+        .catch(function (error) {
           console.error("Error writing document: ", error);
-      });
-    })
-    removeAll()
-    locally.push('/')
-
+        });
+    });
+    removeAll();
+    locally.push("/");
   }
 
   return (
@@ -116,7 +110,11 @@ export default function FormCheckout() {
               className="validate"
             />
             <label htmlFor="email">Mail</label>
-            {!validarMail(userInfo.email) && <p style={{color:"rgba(255,50,50,0.8)"}}>Ingrese el mail correctamente</p>}
+            {!validarMail(userInfo.email) && (
+              <p style={{ color: "rgba(255,50,50,0.8)" }}>
+                Ingrese el mail correctamente
+              </p>
+            )}
           </div>
           <div className="input-field col s12 m12">
             <input
@@ -133,10 +131,21 @@ export default function FormCheckout() {
               className="validate"
             />
             <label htmlFor="confirmEmail">Confirmar Mail</label>
-            {userInfo.email !== userInfo.confirmEmail && <p style={{color:"rgba(255,50,50,0.8)"}}>Los mails no coinciden</p>}
+            {userInfo.email !== userInfo.confirmEmail && (
+              <p style={{ color: "rgba(255,50,50,0.8)" }}>
+                Los mails no coinciden
+              </p>
+            )}
           </div>
           <div style={{ marginLeft: "10px" }}>
-            <button disabled={userInfo.email !== userInfo.confirmEmail || userInfo.email === ""} type="submit" className="btn">
+            <button
+              disabled={
+                userInfo.email !== userInfo.confirmEmail ||
+                userInfo.email === ""
+              }
+              type="submit"
+              className="btn"
+            >
               Enviar
             </button>
           </div>

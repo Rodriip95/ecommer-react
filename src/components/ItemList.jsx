@@ -18,9 +18,9 @@ export default function ItemList() {
       if (querySnapshot.size === 0) {
         console.log("No hay resultados");
       }
-      querySnapshot.docs.forEach((element) => {
-        console.log(element.data);
-      });
+      // querySnapshot.docs.forEach((element) => {
+      //   console.log(element.data);
+      // });
       setItems(
         querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
       );
@@ -36,14 +36,10 @@ export default function ItemList() {
       .where("categoria", "==", "bebida")
       .get()
       .then((querySnapshot) => {
-        
         if (querySnapshot.size === 0) {
           console.log("No hay resultados");
         }
-        
-        querySnapshot.docs.forEach((element) => {
-          console.log(element.data);
-        });
+
         setItems(
           querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
         );
@@ -59,14 +55,10 @@ export default function ItemList() {
       .where("categoria", "==", "comida")
       .get()
       .then((querySnapshot) => {
-        
         if (querySnapshot.size == 0) {
           console.log("No hay resultados");
         }
-        
-        querySnapshot.docs.forEach((element) => {
-          console.log(element.data);
-        });
+
         setItems(
           querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
         );
@@ -83,7 +75,13 @@ export default function ItemList() {
         <>
           <div>
             <h3>{categoria}</h3>
-            <button onClick={()=>{setReset(!reset);setCategoria("Categorias");}} class="btn-floating waves-effect waves-light red">
+            <button
+              onClick={() => {
+                setReset(!reset);
+                setCategoria("Categorias");
+              }}
+              class="btn-floating waves-effect waves-light red"
+            >
               <i class="material-icons">close</i>
             </button>
             <button

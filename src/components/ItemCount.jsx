@@ -1,29 +1,27 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 
-export default function ItemCount({addCart,  product, unidades ,handlerAdd}) {
-  const [cantidad, setCant] = useState(1)
-  const [goCart, setGo] = useState(false)
+export default function ItemCount({ addCart, product, unidades, handlerAdd }) {
+  const [cantidad, setCant] = useState(1);
+  const [goCart, setGo] = useState(false);
 
-  function restar(){
-    if(cantidad > 1){
-      setCant(cantidad-1)
+  function restar() {
+    if (cantidad > 1) {
+      setCant(cantidad - 1);
     }
-    console.log(cantidad)
   }
-  function sumar(product){
-    if(cantidad < product.stock){
-      setCant(cantidad+1)
+  function sumar(product) {
+    if (cantidad < product.stock) {
+      setCant(cantidad + 1);
     }
-    console.log(cantidad)
   }
 
-  function goCartBtn(){
-    setGo(true)
+  function goCartBtn() {
+    setGo(true);
   }
 
-// {sum();sumarStock(product.id, unidades); descontarStock(product.id, unidades)}
+  // {sum();sumarStock(product.id, unidades); descontarStock(product.id, unidades)}
   return (
     <>
       <div
@@ -31,8 +29,12 @@ export default function ItemCount({addCart,  product, unidades ,handlerAdd}) {
           margin: "10px 50px",
           display: "flex",
           justifyContent: "center",
-        }}>
-        <button onClick={restar} style={{ border: "none", backgroundColor: "rgba(255,255,255)" }}>
+        }}
+      >
+        <button
+          onClick={restar}
+          style={{ border: "none", backgroundColor: "rgba(255,255,255)" }}
+        >
           <a className="btn-floating waves-effect waves-light red">
             <i className="material-icons">remove</i>
           </a>
@@ -40,7 +42,10 @@ export default function ItemCount({addCart,  product, unidades ,handlerAdd}) {
         <span style={{ margin: "10px 15px", fontSize: "24px", color: "black" }}>
           {cantidad}
         </span>
-        <button onClick={()=>sumar(product)} style={{ border: "none", backgroundColor: "rgba(255,255,255)" }}>
+        <button
+          onClick={() => sumar(product)}
+          style={{ border: "none", backgroundColor: "rgba(255,255,255)" }}
+        >
           <a className="btn-floating waves-effect waves-light red">
             <i className="material-icons">add</i>
           </a>
@@ -49,11 +54,23 @@ export default function ItemCount({addCart,  product, unidades ,handlerAdd}) {
       <div
         style={{ margin: "10px", display: "flex", justifyContent: "center" }}
       >
-        {!goCart? <button onClick={()=> {addCart(product, cantidad);goCartBtn()}} className="waves-effect waves-light btn">Agregar al Carrito</button> :
-        <Link to='/cart'>
-          <button className="waves-effect waves-light btn">Ir al carrito</button>
-        </Link>
-        }
+        {!goCart ? (
+          <button
+            onClick={() => {
+              addCart(product, cantidad);
+              goCartBtn();
+            }}
+            className="waves-effect waves-light btn"
+          >
+            Agregar al Carrito
+          </button>
+        ) : (
+          <Link to="/cart">
+            <button className="waves-effect waves-light btn">
+              Ir al carrito
+            </button>
+          </Link>
+        )}
       </div>
     </>
   );
