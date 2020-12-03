@@ -45,5 +45,7 @@ En el carrito se encuentra el boton checkout el cual nos direcciona al formulari
 
 Todos los campos son obligatorios, el mail esta validado con Regex y cuando la corfirmacion del mail es correcta se activa el boton para finalizar el pedido, se dispara la alerta (*swetalert*). Esto actualiza el stock en Firestore.
 
+## Demo
 
+Accede al video de la demo [aquí](https://youtu.be/KMIiaTROGX4)
 
