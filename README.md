@@ -16,6 +16,7 @@ Esta aplicacion web esta basada en un e-commerce donde un usuario puede navegar 
 * `firestore`
 
 ## Objetivo
+### Orientada en Mobile First
 
 El objetivo de este proyecto es la *simplicidad* de la interfaz para brindarle al usuario una experiencia simple y directa, donde el objetivo es agregar al carrito y realizar el pedido.
 
