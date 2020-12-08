@@ -20,16 +20,19 @@ function App() {
       <Fragment>
         <NavBar/>
         <Switch>
-          <Route path="/item/:id">
+        <Route exact path="/categoria/:cat">
+        <ItemListContainer/>
+          </Route>
+          <Route exact path="/item/:id">
             <ItemDetail/>
           </Route>
-          <Route path="/checkout">
+          <Route exact path="/checkout">
             <FormCheckout/>
           </Route>
-          <Route path="/cart">
+          <Route exact path="/cart">
             <Cart/>
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <ItemListContainer/>
           </Route>
         </Switch>

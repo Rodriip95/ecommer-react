@@ -87,7 +87,7 @@ export default function FormCheckout() {
               type="text"
               className="validate"
             />
-            <label htmlFor="stock">Nombre</label>
+            <label htmlFor="name">Nombre</label>
           </div>
           <div className="input-field col s6 m6">
             <input
