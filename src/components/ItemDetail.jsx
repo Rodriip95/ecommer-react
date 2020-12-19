@@ -1,21 +1,9 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import React from "react";
 import ItemCount from "./ItemCount";
-import { CartContext } from "../context/CartContext";
-import { getFirestore } from "../firebase";
 import Images from "./images/images";
-import Spinner from "./spinner/Spinner";
 
-export default function ItemDetail({
-  products,
-  locally,
-  addCart,
-  unidades,
-  handlerAdd,
-}) {
-  useEffect(()=>{
-    console.log(products)
-  },[])
+
+export default function ItemDetail({products, locally, addCart, unidades, handlerAdd}){
 
   return (
     <>

@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import ItemCount from "./ItemCount";
 import { CartContext } from "../context/CartContext";
 import { getFirestore } from "../firebase";
-import Images from "./images/images";
 import Spinner from "./spinner/Spinner";
 import ItemDetail from "./ItemDetail";
 
@@ -57,7 +55,7 @@ export default function ItemDetailContainer() {
             handlerAdd={handlerAdd}
           />
         </>
-      )}{" "}
+      )}
     </>
   );
 }
