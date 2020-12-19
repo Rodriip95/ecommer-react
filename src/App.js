@@ -10,6 +10,7 @@ import Cart from './components/cart';
 
 import './firebase';
 import FormCheckout from './components/FormCheckout';
+import ItemDetailContainer from './components/ItemDetailContainer';
 
 function App() {
  
@@ -24,7 +25,7 @@ function App() {
         <ItemListContainer/>
           </Route>
           <Route exact path="/item/:id">
-            <ItemDetail/>
+            <ItemDetailContainer/>
           </Route>
           <Route exact path="/checkout">
             <FormCheckout/>
